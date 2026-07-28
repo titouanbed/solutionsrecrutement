@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXZT1CSTYX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-QXZT1CSTYX");
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solution Recrutement — Matching IA et vivier vivant pour recruter juste</title>
+  <meta name="description" content="Solution Recrutement compare chaque profil candidat à plus de 565 000 offres actives et explique chaque match — points forts, points de vigilance — grâce à un moteur sémantique et IA, avec réactivation proactive du vivier." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://solutionsrecrutement.fr/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://solutionsrecrutement.fr/" />
+  <meta property="og:title" content="Solution Recrutement — Matching IA et vivier vivant pour recruter juste" />
+  <meta property="og:description" content="Un moteur de matching sémantique et IA qui compare chaque profil à plus de 565 000 offres actives en France, explique chaque match, et réactive un vivier qui ne dort jamais." />
+  <meta property="og:locale" content="fr_FR" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --signal: #2368C7;
+      --signal-dark: #1B57A6;
+      --signal-soft: #E9F1FB;
+      --ink: #222222;
+      --text: #484848;
+      --muted: #717171;
+      --paper: #FFFFFF;
+      --mist: #F7F7F7;
+      --line: #DDDDDD;
+      --font: "Plus Jakarta Sans", system-ui, sans-serif;
+      --radius-s: 14px;
+      --radius-m: 20px;
+      --radius-l: 28px;
+      --shadow-soft: 0 6px 20px rgba(0,0,0,.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 3px;
+      border-radius: var(--radius-s);
+    }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 200;
+      background: var(--ink); color: white; padding: 12px 18px; border-radius: 100px;
+    }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      height: 88px;
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; }
+    .brand img { height: 110px; width: auto; object-fit: contain; }
+    .nav-actions { display: flex; align-items: center; gap: 22px; }
+    .nav-link { color: var(--text); font-size: 14.5px; font-weight: 600; transition: color .15s; }
+    .nav-link:hover { color: var(--ink); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 22px; border-radius: 100px;
+      border: 1px solid transparent; background: var(--ink); color: white;
+      font-size: 14.5px; font-weight: 700; font-family: var(--font);
+      transition: transform .18s cubic-bezier(.22,1,.36,1), background .18s ease, box-shadow .18s ease;
+      white-space: nowrap; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .btn.signal { background: var(--signal); }
+    .btn.signal:hover { background: var(--signal-dark); }
+    .btn.ghost { background: var(--paper); color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { background: var(--mist); }
+
+    main { padding-top: 88px; }
+
+    /* ── BADGES / KICKERS (pill) ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--signal-soft); color: var(--signal-dark);
+      border-radius: 100px; padding: 8px 15px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .01em;
+    }
+    .badge::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--signal); flex-shrink: 0; }
+    .badge.on-dark { background: rgba(255,255,255,.14); color: #90C6F2; }
+    .badge.on-dark::before { background: #90C6F2; }
+
+    .section-title {
+      margin-top: 16px; color: var(--ink);
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.12; letter-spacing: -0.02em; font-weight: 800;
+    }
+    .section-text { margin-top: 16px; max-width: 620px; color: var(--text); font-size: 16.5px; line-height: 1.7; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .08s; }
+    .reveal-delay-2 { transition-delay: .16s; }
+    .reveal-delay-3 { transition-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none; opacity: 1; transform: none; }
+    }
+
+    /* ══════════════ HERO ══════════════ */
+    .hero { position: relative; padding: 60px 0 52px; background: var(--paper); }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: 40px; align-items: center;
+    }
+    h1 {
+      margin-top: 20px; color: var(--ink);
+      font-size: clamp(34px, 4.4vw, 56px);
+      line-height: 1.06; letter-spacing: -0.025em; font-weight: 800;
+    }
+    h1 em { font-style: normal; color: var(--signal-dark); }
+    .hero-sub {
+      margin-top: 18px; max-width: 540px;
+      color: var(--text); font-size: 17px; line-height: 1.68;
+    }
+    .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-note {
+      margin-top: 18px; display: flex; align-items: baseline; gap: 8px;
+      color: var(--muted); font-size: 13.5px; line-height: 1.55;
+    }
+    .hero-note span.dot { color: var(--line); }
+
+    .hero-stats {
+      margin-top: 48px;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+    }
+    .stat-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-m);
+      box-shadow: var(--shadow-soft); padding: 22px 20px;
+      transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1), border-color .28s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(0,0,0,.14);
+      border-color: rgba(35,104,199,.3);
+    }
+    .stat-card strong {
+      display: block; color: var(--ink);
+      font-size: 25px; line-height: 1; letter-spacing: -0.02em; font-weight: 800;
+    }
+    .stat-card span { display: block; margin-top: 10px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stat-card, .mech-step, .aud-card, .team-photo, .mech-photo { transition: none !important; }
+    }
+
+    /* ── HERO LIVE SCENE (fond de données, temps réel) ── */
+    .hero-live-wrap { position: relative; }
+    .hero-live {
+      position: relative;
+      height: min(600px, 62vw);
+      perspective: 1200px;
+    }
+    .hero-aurora {
+      position: absolute; inset: -22%; z-index: 0; pointer-events: none;
+      filter: blur(50px); opacity: .8;
+    }
+    .hero-aurora span { position: absolute; border-radius: 50%; }
+    .hero-aurora span:nth-child(1) {
+      width: 55%; height: 55%; left: 0%; top: 4%;
+      background: radial-gradient(circle, rgba(35,104,199,.32), rgba(35,104,199,0) 70%);
+      animation: auroraDrift1 18s cubic-bezier(.45,0,.55,1) infinite;
+    }
+    .hero-aurora span:nth-child(2) {
+      width: 46%; height: 46%; right: 2%; top: 22%;
+      background: radial-gradient(circle, rgba(35,104,199,.24), rgba(35,104,199,0) 70%);
+      animation: auroraDrift2 22s cubic-bezier(.45,0,.55,1) infinite;
+    }
+    .hero-aurora span:nth-child(3) {
+      width: 40%; height: 40%; left: 22%; bottom: -4%;
+      background: radial-gradient(circle, rgba(35,104,199,.2), rgba(35,104,199,0) 70%);
+      animation: auroraDrift3 20s cubic-bezier(.45,0,.55,1) infinite;
+    }
+    @keyframes auroraDrift1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(7%,9%) scale(1.15); } }
+    @keyframes auroraDrift2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-9%,6%) scale(.88); } }
+    @keyframes auroraDrift3 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(6%,-8%) scale(1.1); } }
+
+    .live-ticker-outer {
+      position: absolute; inset: -6% -12%; z-index: 1;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 10%, black 92%, transparent);
+      pointer-events: none;
+    }
+    .live-ticker { display: flex; gap: 5%; height: 100%; opacity: .75; }
+    .ticker-col {
+      flex: 1; overflow: hidden; height: 100%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+    }
+    .ticker-track { display: flex; flex-direction: column; gap: 20px; will-change: transform; }
+    .ticker-col[data-col="0"] .ticker-track { animation: tickUp 13s linear infinite; }
+    .ticker-col[data-col="1"] .ticker-track { animation: tickUp 17s linear infinite; animation-delay: -4s; }
+    .ticker-col[data-col="2"] .ticker-track { animation: tickUp 15s linear infinite; animation-delay: -9s; }
+    .ticker-col[data-col="3"] .ticker-track { animation: tickUp 19s linear infinite; animation-delay: -6s; }
+    @keyframes tickUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+    .trow {
+      font-size: 11px; font-weight: 500; color: rgba(34,34,34,.16);
+      white-space: nowrap; padding: 2px 0;
+    }
+    .trow.hot { color: rgba(35,104,199,.4); animation: hotPulse 3.6s ease-in-out infinite; }
+    @keyframes hotPulse {
+      0%, 100% { color: rgba(35,104,199,.35); }
+      50% { color: rgba(35,104,199,.9); }
+    }
+
+    .live-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .live-dust {
+      position: absolute; width: 4px; height: 4px; border-radius: 999px;
+      background: var(--signal); opacity: 0;
+      animation: dustFloat linear infinite;
+    }
+    @keyframes dustFloat {
+      0% { opacity: 0; transform: translateY(0) scale(.6); }
+      12% { opacity: .55; }
+      88% { opacity: .4; }
+      100% { opacity: 0; transform: translateY(-120px) scale(1); }
+    }
+
+    .live-scene-inner {
+      position: absolute; inset: 0; z-index: 3;
+      transition: transform .3s cubic-bezier(.22,1,.36,1);
+      transform-style: preserve-3d;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none !important; }
+      .trow.hot { animation: none !important; color: rgba(35,104,199,.7); }
+      .live-dust { animation: none !important; display: none; }
+      .hero-aurora span { animation: none !important; }
+      .live-scene-inner { transform: none !important; }
+    }
+    @media (max-width: 980px) {
+      .hero-live-wrap { order: -1; }
+      .hero-live { height: min(420px, 88vw); }
+    }
+
+    /* ══════════════ MARQUEE VILLES ══════════════ */
+    .cities-marquee {
+      overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: var(--mist); padding: 18px 0;
+    }
+    .cities-track {
+      display: flex; align-items: center; width: max-content;
+      animation: citiesScroll 34s linear infinite;
+    }
+    .cities-track span {
+      color: var(--muted); font-size: 13.5px; font-weight: 700; letter-spacing: .03em;
+      text-transform: uppercase; white-space: nowrap; padding: 0 6px;
+    }
+    .cities-track i {
+      width: 5px; height: 5px; border-radius: 999px; background: var(--signal); margin: 0 22px; flex-shrink: 0;
+    }
+    @keyframes citiesScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .cities-track { animation: none; }
+    }
+
+    /* ══════════════ HONEST BAND ══════════════ */
+    .honest { background: var(--signal-soft); padding: 84px 0; }
+    .honest-card {
+      max-width: 720px; margin: 0 auto; text-align: center;
+      background: var(--paper); border-radius: var(--radius-l);
+      box-shadow: var(--shadow-lg); padding: 56px 60px;
+    }
+    .honest-card .badge { margin: 0 auto; }
+    .honest-mark {
+      display: block; font-family: Georgia, "Times New Roman", serif;
+      font-size: 64px; line-height: 1; font-weight: 700;
+      color: var(--signal); opacity: .3; margin-bottom: -10px;
+    }
+    .honest-quote {
+      margin-top: 16px; color: var(--ink);
+      font-size: clamp(24px, 3.2vw, 36px); line-height: 1.32; letter-spacing: -0.015em; font-weight: 800;
+    }
+    .honest-sig {
+      margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 10px;
+      color: var(--text); font-size: 13.5px; font-weight: 700;
+    }
+    .honest-avatar {
+      width: 30px; height: 30px; border-radius: 999px;
+      background: var(--signal-soft); color: var(--signal-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; flex-shrink: 0;
+    }
+
+    /* ══════════════ SECTIONS COMMUNES ══════════════ */
+    .section { padding: 88px 0; background: var(--paper); }
+    .section.mist { background: var(--mist); }
+
+    /* ── MECANISME ── */
+    .mech-steps { margin-top: 44px; display: grid; gap: 18px; }
+    .mech-step {
+      display: grid; grid-template-columns: 52px 1fr; gap: 24px; align-items: center;
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-m);
+      box-shadow: var(--shadow-soft); padding: 30px 32px;
+      transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1), border-color .28s ease;
+    }
+    .mech-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(0,0,0,.14);
+      border-color: rgba(35,104,199,.3);
+    }
+    .mech-step.has-photo { grid-template-columns: 52px minmax(0,1fr) minmax(0,280px); }
+    .mech-num {
+      width: 44px; height: 44px; border-radius: 999px;
+      background: var(--signal-soft); color: var(--signal-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px; align-self: start;
+      transition: background .28s ease, color .28s ease;
+    }
+    .mech-step:hover .mech-num { background: var(--signal); color: white; }
+    .mech-body h3 { color: var(--ink); font-size: 20px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
+    .mech-body p { margin-top: 10px; color: var(--text); font-size: 15px; line-height: 1.7; max-width: 480px; }
+    .mech-photo { border-radius: var(--radius-m); overflow: hidden; aspect-ratio: 16/11; box-shadow: var(--shadow-soft); }
+    .mech-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+    .mech-step:hover .mech-photo img { transform: scale(1.06); }
+    .mech-photo-cap { margin-top: 10px; color: var(--muted); font-size: 12.5px; font-weight: 600; }
+
+    /* ── PUBLICS ── */
+    .aud-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .aud-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-m);
+      box-shadow: var(--shadow-soft); padding: 30px 26px;
+      display: flex; flex-direction: column; height: 100%;
+      transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1), border-color .28s ease;
+    }
+    .aud-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(0,0,0,.15);
+      border-color: rgba(35,104,199,.32);
+    }
+    .aud-label {
+      display: inline-flex; align-items: center; align-self: flex-start;
+      background: var(--mist); color: var(--muted); border-radius: 100px;
+      padding: 6px 13px; font-size: 12px; font-weight: 700;
+      transition: background .28s ease, color .28s ease;
+    }
+    .aud-card:hover .aud-label { background: var(--signal-soft); color: var(--signal-dark); }
+    .aud-card h3 { margin-top: 16px; color: var(--ink); font-size: 20px; font-weight: 800; letter-spacing: -0.015em; line-height: 1.3; }
+    .aud-card p { margin-top: 12px; color: var(--text); font-size: 14.5px; line-height: 1.65; flex: 1; }
+
+    /* ── EQUIPE ── */
+    .team-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px, 440px); gap: 52px; align-items: center; }
+    .team-photo { border-radius: var(--radius-l); overflow: hidden; aspect-ratio: 16/12; box-shadow: var(--shadow-lg); }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+    .team-photo:hover img { transform: scale(1.05); }
+
+    /* ── CONTACT ── */
+    .contact-strip { display: grid; grid-template-columns: minmax(0,0.85fr) minmax(0,1.15fr); gap: 18px; }
+    .why-card, .contact-card { border-radius: var(--radius-l); padding: 36px; }
+    .why-card { background: var(--ink); color: white; box-shadow: var(--shadow-lg); }
+    .why-card h2 { margin-top: 14px; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; }
+    .why-points { margin-top: 22px; display: grid; gap: 14px; }
+    .why-points div { display: flex; gap: 11px; color: rgba(255,255,255,.82); font-size: 14px; line-height: 1.55; }
+    .why-points div::before {
+      content: ""; flex-shrink: 0; margin-top: 7px; width: 6px; height: 6px; border-radius: 999px; background: var(--signal);
+    }
+
+    .contact-card { background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+    .contact-card h2 { margin-top: 12px; color: var(--ink); font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; }
+    .contact-card .sub { margin-top: 10px; color: var(--text); font-size: 14.5px; line-height: 1.6; }
+    .form-fields { margin-top: 24px; display: grid; gap: 12px; }
+    .field label { display: block; margin-bottom: 6px; color: var(--text); font-size: 13px; font-weight: 700; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: var(--radius-s);
+      background: var(--paper); color: var(--ink); font-size: 15px; padding: 13px 15px;
+      outline: none; transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .field textarea { resize: vertical; min-height: 90px; font-family: var(--font); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--signal); box-shadow: 0 0 0 4px rgba(35,104,199,.1);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #9CA1AB; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .submit-row { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+    .status { color: var(--signal-dark); font-size: 13px; font-weight: 700; }
+    .btn-submit {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 26px; border-radius: 100px; border: none;
+      background: var(--signal); color: white; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background .18s ease, transform .18s cubic-bezier(.22,1,.36,1); white-space: nowrap;
+    }
+    .btn-submit:hover { background: var(--signal-dark); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ── FOOTER ── */
+    .footer { border-top: 1px solid var(--line); background: var(--paper); padding: 36px 0; }
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px)); margin: 0 auto;
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      color: var(--muted); font-size: 13px; line-height: 1.7;
+    }
+    .footer strong { color: var(--ink); font-weight: 800; }
+    .footer a { color: var(--signal-dark); font-weight: 700; }
+
+    /* ══════════════ RESPONSIVE ══════════════ */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .mech-step, .mech-step.has-photo { grid-template-columns: 44px 1fr; }
+      .mech-photo { grid-column: 1 / -1; aspect-ratio: 16/8; }
+      .aud-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .team-grid .team-photo { order: -1; }
+      .contact-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      html { scroll-padding-top: 80px; }
+      .nav-inner { height: 76px; width: min(100% - 28px, 1120px); }
+      .brand img { height: 42px; }
+      .nav-link { display: none; }
+      .btn { min-height: 42px; padding: 0 16px; font-size: 13.5px; }
+      main { padding-top: 76px; }
+      .container, .footer-inner { width: min(100% - 28px, 1120px); }
+      .hero { padding: 36px 0 32px; }
+      .hero-live { height: min(300px, 78vw); }
+      .ticker-col[data-col="2"], .ticker-col[data-col="3"] { display: none; }
+      h1 { font-size: 32px; }
+      .hero-sub { font-size: 15.5px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; min-height: 48px; font-size: 14px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; margin-top: 36px; }
+      .stat-card { padding: 18px 16px; }
+      .stat-card strong { font-size: 21px; }
+      .honest { padding: 48px 0; }
+      .honest-card { padding: 36px 24px; }
+      .honest-mark { font-size: 46px; }
+      .section { padding: 56px 0; }
+      .mech-step { padding: 22px; }
+      .field-row { grid-template-columns: 1fr; }
+      .why-card, .contact-card { padding: 24px; }
+      .submit-row { flex-direction: column; align-items: stretch; }
+      .btn-submit { width: 100%; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#top" class="skip-link">Aller au contenu</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" aria-label="Solution Recrutement — accueil">
+        <img src="Logo.svg" alt="Solution Recrutement" />
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link" href="#mecanisme">Comment ça marche</a>
+        <a class="nav-link" href="mailto:contact@solutionsrecrutement.fr">Contact</a>
+        <a class="btn signal" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Moteur de matching recrutement</div>
+          <h1>Le bon candidat, dans l'entreprise qui lui convient vraiment. <em>En 2 minutes.</em></h1>
+          <p class="hero-sub">
+            Sur le vivier national le plus large de France : plus de 565 000 offres d'emploi actives, accessibles via notre connecteur.
+            Le moteur compare chaque profil à l'intégralité du vivier et explique chaque match — points forts, points de vigilance —
+            au lieu d'un simple filtre par mots-clés.
+          </p>
+          <div class="hero-actions">
+            <a class="btn signal" href="#contact">Nous contacter</a>
+            <a class="btn ghost" href="#mecanisme">Voir comment ça marche</a>
+          </div>
+          <p class="hero-note">Connecté à France Travail <span class="dot">·</span> vivier national accessible</p>
+        </div>
+
+        <div class="hero-live-wrap">
+          <div class="hero-live" id="heroLive" aria-hidden="true">
+            <div class="hero-aurora"><span></span><span></span><span></span></div>
+            <div class="live-ticker-outer">
+              <div class="live-ticker" id="liveTicker">
+                <div class="ticker-col" data-col="0"><div class="ticker-track" id="tickerCol0"></div></div>
+                <div class="ticker-col" data-col="1"><div class="ticker-track" id="tickerCol1"></div></div>
+                <div class="ticker-col" data-col="2"><div class="ticker-track" id="tickerCol2"></div></div>
+                <div class="ticker-col" data-col="3"><div class="ticker-track" id="tickerCol3"></div></div>
+              </div>
+            </div>
+            <div class="live-particles" id="liveParticles"></div>
+            <div class="live-scene-inner" id="liveSceneInner"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-stats">
+        <div class="stat-card"><strong class="count-up" data-target="565000" data-prefix="+">0</strong><span>Offres d'emploi actives, vivier national accessible via notre connecteur.</span></div>
+        <div class="stat-card"><strong>Sémantique + IA</strong><span>Le moteur comprend un profil, au-delà des mots-clés du CV.</span></div>
+        <div class="stat-card"><strong>Vivier vivant</strong><span>Réactivation proactive : les profils ne dorment pas dans une base morte.</span></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE VILLES -->
+    <div class="cities-marquee" aria-hidden="true">
+      <div class="cities-track">
+        <span>Paris</span><i></i><span>Lyon</span><i></i><span>Marseille</span><i></i><span>Toulouse</span><i></i>
+        <span>Nantes</span><i></i><span>Bordeaux</span><i></i><span>Lille</span><i></i><span>Strasbourg</span><i></i>
+        <span>Nice</span><i></i><span>Rennes</span><i></i><span>Grenoble</span><i></i><span>Montpellier</span><i></i>
+        <span>Paris</span><i></i><span>Lyon</span><i></i><span>Marseille</span><i></i><span>Toulouse</span><i></i>
+        <span>Nantes</span><i></i><span>Bordeaux</span><i></i><span>Lille</span><i></i><span>Strasbourg</span><i></i>
+        <span>Nice</span><i></i><span>Rennes</span><i></i><span>Grenoble</span><i></i><span>Montpellier</span><i></i>
+      </div>
+    </div>
+
+    <!-- HONEST BAND -->
+    <section class="honest">
+      <div class="container">
+        <div class="honest-card reveal">
+          <span class="honest-mark" aria-hidden="true">&ldquo;</span>
+          <div class="badge">Notre vision</div>
+          <p class="honest-quote">Je ne veux pas remplir un poste. Je veux qu'un candidat trouve l'entreprise où il aura vraiment envie de rester.</p>
+          <div class="honest-sig">
+            <span class="honest-avatar" aria-hidden="true">T</span>
+            <span>Titouan, fondateur de Solution Recrutement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MECANISME -->
+    <section id="mecanisme" class="section">
+      <div class="container">
+        <div class="badge reveal">Comment ça marche</div>
+        <h2 class="section-title reveal">Du mandat au candidat expliqué, sans étape manuelle.</h2>
+        <p class="section-text reveal">Quatre étapes, aucune recherche à faire à la main.</p>
+
+        <div class="mech-steps">
+          <div class="mech-step has-photo reveal">
+            <div class="mech-num">01</div>
+            <div class="mech-body">
+              <h3>Le mandat est défini, le profil candidat est structuré.</h3>
+              <p>L'entreprise ou le cabinet formalise son besoin ; côté candidat, CV et profil sont analysés automatiquement — compétences, expérience, mobilité.</p>
+            </div>
+            <figure>
+              <div class="mech-photo"><img src="photo1.png" alt="Candidat en recherche d'emploi, ordinateur portable sous le bras" loading="lazy" /></div>
+              <figcaption class="mech-photo-cap">Le candidat, point de départ du profil.</figcaption>
+            </figure>
+          </div>
+
+          <div class="mech-step reveal">
+            <div class="mech-num">02</div>
+            <div class="mech-body">
+              <h3>Le moteur compare à l'intégralité du vivier national.</h3>
+              <p>Plus de 565 000 offres actives, accessibles nationalement via notre connecteur — un vivier large, pas encore intégralement absorbé par le moteur, mais déjà exploitable. Le matching est sémantique et IA : il comprend un profil, pas seulement des mots-clés.</p>
+            </div>
+          </div>
+
+          <div class="mech-step reveal">
+            <div class="mech-num">03</div>
+            <div class="mech-body">
+              <h3>Chaque match est expliqué, pas juste calculé.</h3>
+              <p>Points forts, points de vigilance : pourquoi ce candidat correspond, et où il faut rester attentif. Une recommandation qu'on peut justifier — jamais une boîte noire.</p>
+            </div>
+          </div>
+
+          <div class="mech-step reveal">
+            <div class="mech-num">04</div>
+            <div class="mech-body">
+              <h3>Le vivier reste vivant.</h3>
+              <p>Les profils ne dorment pas : réactivation proactive dès qu'un nouveau mandat correspond à un profil déjà identifié — candidat ou entreprise selon le sens du besoin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICS -->
+    <section id="publics" class="section mist">
+      <div class="container">
+        <div class="badge reveal">Pour qui</div>
+        <h2 class="section-title reveal">Trois publics, une seule promesse.</h2>
+
+        <div class="aud-grid">
+          <div class="aud-card reveal">
+            <div class="aud-label">01 — Entreprises</div>
+            <h3>Le bon candidat, pas 50 CV à trier.</h3>
+            <p>On vous envoie les profils qui correspondent vraiment à votre mandat, identifiés et expliqués par le moteur — pas une liste brute à filtrer.</p>
+          </div>
+          <div class="aud-card reveal reveal-delay-1">
+            <div class="aud-label">02 — Cabinets de recrutement</div>
+            <h3>Des mandats traités plus vite, sans perdre en justesse.</h3>
+            <p>Le moteur structure et explique chaque match — de quoi appuyer vos recommandations auprès de vos clients, sans deviner.</p>
+          </div>
+          <div class="aud-card reveal reveal-delay-2">
+            <div class="aud-label">03 — Candidats</div>
+            <h3>Un profil qui reste vivant, pas oublié dans une base.</h3>
+            <p>Votre profil est réactivé dès qu'un mandat correspond — pas besoin de repostuler à chaque fois pour exister dans le vivier.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPE / VISION -->
+    <section id="equipe" class="section">
+      <div class="container team-grid">
+        <div class="reveal">
+          <div class="badge">L'équipe</div>
+          <h2 class="section-title">Le même moteur, appliqué au recrutement classique.</h2>
+          <p class="section-text">
+            Solution Recrutement s'appuie sur le moteur construit pour Solution Alternance — repensé pour les mandats
+            classiques : matching sémantique et IA, explicabilité de chaque match, et un vivier qui reste vivant
+            grâce à la réactivation proactive.
+          </p>
+        </div>
+        <div class="team-photo reveal reveal-delay-1">
+          <img src="photo3.png" alt="Équipe diverse en brainstorm, post-its sur la table" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section mist">
+      <div class="container contact-strip">
+
+        <div class="why-card reveal">
+          <div class="badge on-dark">Pourquoi nous écrire</div>
+          <h2>Un moteur qui tourne, pas un pitch tout fait.</h2>
+          <div class="why-points">
+            <div>Le moteur tourne déjà, sur un vivier national de plus de 565 000 offres.</div>
+            <div>Chaque match est expliqué — points forts, points de vigilance, jamais une boîte noire.</div>
+            <div>On répond personnellement, pas de bot commercial.</div>
+            <div>Utile pour une entreprise, un cabinet de recrutement, un candidat, ou simple curiosité.</div>
+          </div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-1">
+          <div class="badge">Contact</div>
+          <h2>Parlons de votre besoin.</h2>
+          <p class="sub">Dites-nous qui vous êtes, on adapte la réponse — pas de page séparée pour chaque public.</p>
+
+          <form id="demo-form" action="https://formspree.io/f/xlgqawjv" method="POST">
+            <div class="form-fields">
+              <div class="field">
+                <label for="role">Je suis... *</label>
+                <select id="role" name="role" required>
+                  <option value="" disabled selected>Sélectionnez une option</option>
+                  <option value="Entreprise">Une entreprise</option>
+                  <option value="Cabinet de recrutement">Un cabinet de recrutement</option>
+                  <option value="Candidat">Un candidat</option>
+                  <option value="Autre">Autre (partenaire, curieux…)</option>
+                </select>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Nom et prénom *</label>
+                  <input id="name" name="name" type="text" placeholder="Marie Dupont" required />
+                </div>
+                <div class="field">
+                  <label for="organization">Organisation</label>
+                  <input id="organization" name="organization" type="text" placeholder="Entreprise, cabinet…" />
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="email">Email *</label>
+                  <input id="email" name="email" type="email" placeholder="marie@exemple.fr" required />
+                </div>
+                <div class="field">
+                  <label for="phone">Téléphone</label>
+                  <input id="phone" name="phone" type="tel" placeholder="06 00 00 00 00" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Dites-nous en un peu plus sur votre besoin."></textarea>
+              </div>
+            </div>
+            <input type="hidden" name="_subject" value="Nouveau message — Solution Recrutement" />
+            <input type="hidden" name="source" value="Landing index solutionsrecrutement.fr" />
+            <div class="submit-row">
+              <div id="form-status" class="status" role="status" aria-live="polite"></div>
+              <button class="btn-submit" type="submit">Envoyer le message →</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Solution Recrutement</strong><br />
+        Moteur de matching recrutement — sémantique et IA, sur vivier national.
+      </div>
+      <div>
+        Email : <a href="mailto:contact@solutionsrecrutement.fr">contact@solutionsrecrutement.fr</a><br />
+        Téléphone : <a href="tel:+33782298559">07 82 29 85 59</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Formulaire de contact ──
+    (function () {
+      const form = document.getElementById("demo-form");
+      const status = document.getElementById("form-status");
+      const button = form.querySelector("button[type='submit']");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        status.textContent = "";
+        button.disabled = true;
+        button.textContent = "Envoi en cours…";
+        try {
+          const r = await fetch(form.action, {
+            method: "POST", body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+          if (r.ok) {
+            status.textContent = "Message envoyé. On vous répond rapidement.";
+            form.reset();
+            if (typeof gtag === "function") gtag("event", "contact_request", { event_category: "form", event_label: "landing_index" });
+          } else {
+            status.textContent = "Erreur. Contactez-nous par email.";
+          }
+        } catch {
+          status.textContent = "Connexion impossible. Contactez-nous par email.";
+        } finally {
+          button.disabled = false;
+          button.textContent = "Envoyer le message →";
+        }
+      });
+    })();
+
+    // ── Reveal au scroll ──
+    (function () {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const items = document.querySelectorAll(".reveal");
+      if (reduced || !("IntersectionObserver" in window)) {
+        items.forEach(el => el.classList.add("is-visible"));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+      items.forEach(el => io.observe(el));
+    })();
+
+    // ── Compteurs animés (chiffres réels du hero) ──
+    (function () {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const counters = document.querySelectorAll(".count-up");
+      if (!counters.length) return;
+
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.target, 10);
+        const prefix = el.dataset.prefix || "";
+        if (reduced) { el.textContent = prefix + target.toLocaleString("fr-FR"); return; }
+        const dur = 1400;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(eased * target).toLocaleString("fr-FR");
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if (!("IntersectionObserver" in window)) {
+        counters.forEach(animateCounter);
+      } else {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(el => io.observe(el));
+      }
+    })();
+
+    // ── Scène live du hero (fond de données en continu) ──
+    (function () {
+      const scene = document.getElementById("heroLive");
+      if (!scene) return;
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const OFFERS = [
+        "Chef de projet marketing — Paris", "Développeur full-stack — Lyon", "Responsable commercial — Nantes",
+        "Ingénieur logiciel — Bordeaux", "Responsable RH — Toulouse", "Chargé de clientèle senior — Lille",
+        "Comptable confirmé — Marseille", "Acheteur — Rennes", "Chef de projet digital — Nice",
+        "Technicien support N2 — Strasbourg", "Responsable marketing — Reims", "Data analyst — Grenoble",
+        "Responsable logistique — Le Havre", "Business developer — Dijon", "Chargé de recrutement — Angers",
+        "Développeur front-end senior — Metz", "Responsable qualité — Orléans", "Chef de projet RH — Tours"
+      ];
+
+      function fillColumn(el, n) {
+        const rows = [];
+        for (let i = 0; i < n; i++) {
+          const txt = OFFERS[Math.floor(Math.random() * OFFERS.length)];
+          const hot = Math.random() < 0.16;
+          const delay = hot ? ' style="animation-delay:-' + (Math.random() * 3.6).toFixed(2) + 's"' : "";
+          rows.push('<div class="trow' + (hot ? " hot" : "") + '"' + delay + ">" + txt + "</div>");
+        }
+        el.innerHTML = rows.join("") + rows.join(""); // doublé pour boucle infinie sans coupure
+      }
+      fillColumn(document.getElementById("tickerCol0"), 14);
+      fillColumn(document.getElementById("tickerCol1"), 14);
+      fillColumn(document.getElementById("tickerCol2"), 14);
+      fillColumn(document.getElementById("tickerCol3"), 14);
+
+      // ── Poussière ambiante : la scène ne s'arrête jamais complètement ──
+      const particlesWrap = document.getElementById("liveParticles");
+      if (particlesWrap && !reduced) {
+        const count = window.matchMedia("(max-width: 980px)").matches ? 7 : 13;
+        for (let i = 0; i < count; i++) {
+          const dust = document.createElement("div");
+          dust.className = "live-dust";
+          dust.style.left = (Math.random() * 100) + "%";
+          dust.style.top = (55 + Math.random() * 40) + "%";
+          dust.style.animationDuration = (9 + Math.random() * 7) + "s";
+          dust.style.animationDelay = "-" + (Math.random() * 16) + "s";
+          particlesWrap.appendChild(dust);
+        }
+      }
+
+      // ── Parallaxe souris : la scène suit légèrement le curseur ──
+      const sceneInner = document.getElementById("liveSceneInner");
+      if (sceneInner && !reduced && window.matchMedia("(pointer: fine)").matches) {
+        scene.addEventListener("mousemove", (e) => {
+          const r = scene.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          sceneInner.style.transform = "rotateY(" + (px * 10) + "deg) rotateX(" + (py * -10) + "deg)";
+        });
+        scene.addEventListener("mouseleave", () => {
+          sceneInner.style.transform = "rotateY(0deg) rotateX(0deg)";
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
